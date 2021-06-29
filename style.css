@@ -1,0 +1,206 @@
+body {
+    margin: 0 auto;
+    text-align: center;
+    font-family: "proxima nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f6f9fe url(image/backgroud.jpg) no-repeat center top;
+}
+
+.container {
+    width: 1600px;
+}
+
+@media only screen and (max-width: 768px) {
+    header .location {
+        max-width: 250px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    header .location {
+        max-width: 120px;
+    }
+    .container {
+        max-width: 430px;
+    }
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.seperater {
+    color: whitesmoke;
+    margin: 25px 0;
+}
+
+
+/*Header*/
+
+header {
+    color: whitesmoke;
+    margin-top: 5px;
+}
+
+header .logo {
+    height: 50px;
+    float: left;
+}
+
+header .logo img {
+    width: 80px;
+    height: 80px;
+    fill: whitesmoke;
+}
+
+header .logo p {
+    display: inline;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+header .location {
+    width: 320px;
+    height: 50px;
+    padding-top: 20px;
+    display: flex;
+    float: right;
+}
+
+header .location img {
+    width: 20px;
+    height: 20px;
+}
+
+header .location .txt-current-location {
+    width: 50px;
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+header .location input {
+    flex-grow: 1;
+    width: 100px;
+    height: 25px;
+    margin: 0 10px;
+    padding: 0 10px;
+    background-color: rgba(255, 255, 255, .3);
+    color: whitesmoke;
+    border: none;
+    border-radius: 25px;
+}
+
+header .location input:focus {
+    outline: none;
+    border: none;
+}
+
+header .location input::placeholder {
+    color: whitesmoke
+}
+
+
+/*Current Weather*/
+
+main {
+    text-align: left;
+    color: whitesmoke;
+}
+
+main .container {
+    position: relative;
+}
+
+main .current-weather {
+    display: flex;
+    position: relative;
+}
+
+main .current-icon {
+    position: absolute;
+    right: 10%;
+    top: 20%;
+}
+
+main .current-icon img {
+    width: 120px;
+    height: 120px;
+}
+
+.infor>p {
+    margin: 0;
+}
+
+.infor-location {
+    font-weight: bold;
+}
+
+.infor-ict {
+    color: #e6e6e6;
+}
+
+.infor-temperature {
+    color: white;
+    font-size: 100px;
+}
+
+.infor-describe {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.detail {
+    display: flex;
+}
+
+.detail-item {
+    margin-right: 30px;
+    display: flex;
+}
+
+.detail-item img {
+    width: 30px;
+    height: 30px;
+}
+
+.detail-item p {
+    margin-top: 5px;
+}
+
+
+/*Hourly Weather*/
+
+.hourly-weather-card {
+    width: 100%;
+    height: 180px;
+    border: none;
+    margin-top: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 14px 0 rgb(0 0 0 / 8%);
+    background-color: white;
+    color: black;
+}
+
+.list-hourly-weather {
+    list-style: none;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.list-hourly-weather p {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.item {
+    margin: 0 30px;
+    width: 50px;
+    display: inline-block;
+}
+
+.item img {
+    width: 50px;
+    height: 50px;
+}
