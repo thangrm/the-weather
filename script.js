@@ -1,6 +1,8 @@
+//https://api.openweathermap.org/data/2.5/weather?id=1581130&appid=3ad5b0049234bd93097363248575d89f&lang=vi&units=metric
+//
 var nextHourly = document.getElementById("nextHourly");
 var prevHourly = document.getElementById("prevHourly");
-var cardWeather = document.getElementById("cardWeather");
+var cardWeather = document.getElementById("hourlyWeatherCard");
 var NEXT = 1;
 var PREV = 2;
 
@@ -32,3 +34,81 @@ var moveCardHourly = function(moveType) {
     }
     cardWeather.style.marginLeft = margin + "px";
 }
+
+//weekly chart
+const labels = [];
+const DATA_COUNT = 8;
+for (let i = 0; i < DATA_COUNT; ++i) {
+    labels.push(i.toString());
+}
+const datapoints1 = [28, 26, 28, 33, 31, 29, 30, 30];
+const datapoints2 = [24, 22, 22, 24, 22, 23, 24, 24];
+const data = {
+    labels: labels,
+    datasets: [{
+        label: '',
+        backgroundColor: '#ff9900',
+        borderColor: '#ff9900',
+        data: datapoints1,
+        fill: false,
+        tension: 0.3
+    }, {
+        label: '',
+        backgroundColor: '#0099ff',
+        borderColor: '#0099ff',
+        data: datapoints2,
+        fill: false,
+        tension: 0.3
+    }]
+};
+
+const config = {
+    type: 'line',
+    data: data,
+    options: {
+        layout: {
+            padding: {
+                left: 15,
+                right: 15,
+                top: 15,
+                bottom: 0
+            },
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
+            datalabels: {
+                labels: {
+                    title: {
+                        font: {
+                            size: 18,
+                        }
+                    }
+                },
+                clamp: true,
+                anchor: 'end',
+                align: 'top',
+                offset: 2,
+                formatter: function(value, context) {
+                    return value + "°";
+                }
+
+            }
+        },
+        scales: {
+            x: {
+                display: false,
+            },
+            y: {
+                display: false,
+                beginAtZero: true
+            }
+        },
+    }
+};
+Chart.register(ChartDataLabels);
+var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+);

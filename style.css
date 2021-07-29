@@ -171,11 +171,8 @@ main .current-icon img {
 
 /*Hourly Weather*/
 
-.hourly-weather-card {
-    width: 100%;
-    height: 180px;
+.card-weather {
     border: none;
-    margin-top: 200px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 14px 0 rgb(0 0 0 / 8%);
@@ -183,6 +180,12 @@ main .current-icon img {
     color: #808080;
     overflow: hidden;
     position: relative;
+}
+
+.hourly {
+    margin-top: 200px;
+    width: 100%;
+    height: 180px;
 }
 
 .list-hourly-weather {
@@ -198,7 +201,7 @@ main .current-icon img {
     text-align: center;
 }
 
-.card-weather {
+.hourly-weather-card {
     margin-left: 0px;
     transition: margin 1s ease-in-out;
 }
@@ -237,4 +240,54 @@ main .current-icon img {
 
 .next {
     right: 25px;
+}
+
+
+/*Weekly Weather*/
+
+.weekly {
+    margin-top: 50px;
+    width: 920px;
+    position: relative;
+}
+
+.chart-box {
+    height: 180px;
+    width: 820px;
+    margin-left: 30px;
+    position: absolute;
+    top: 165px;
+}
+
+.list-weather-day {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.day-item {
+    width: 106px;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.day-item img {
+    width: 50px;
+    height: 50px;
+}
+
+.weather-night {
+    margin-top: 200px;
+}
+
+
+/*Footer*/
+
+footer {
+    margin-top: 100px;
+    width: 100%;
+    height: 200px;
+    background-color: cornflowerblue;
 }
