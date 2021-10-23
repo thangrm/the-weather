@@ -1,5 +1,3 @@
-//https://api.openweathermap.org/data/2.5/weather?id=1581130&appid=3ad5b0049234bd93097363248575d89f&lang=vi&units=metric
-//
 var nextHourly = document.getElementById("nextHourly");
 var prevHourly = document.getElementById("prevHourly");
 var cardWeather = document.getElementById("hourlyWeatherCard");
