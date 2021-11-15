@@ -2,11 +2,15 @@ body {
     margin: 0 auto;
     text-align: center;
     font-family: "proxima nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: #f6f9fe url(image/backgroud.jpg) no-repeat center top;
+    background: #f6f9fe url(../image/backgroud.jpg) no-repeat center top;
 }
 
 .container {
     width: 1600px;
+}
+
+.filter-white {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(356deg) brightness(102%) contrast(104%);
 }
 
 @media only screen and (max-width: 768px) {

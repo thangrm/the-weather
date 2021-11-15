@@ -5,21 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <title>Thời tiết</title>
+    <link rel="icon" href="{{ asset('asset/image/icon.png') }}" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}">
 </head>
 
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <img src="image/logo.svg" alt="">
+                <img src="{{ asset('asset/image/logo.svg') }}" class="filter-white" alt="Logo">
                 <p>The Weather</p>
             </div>
 
             <div class="location">
-                <img src="image/pin.png" alt="">
+                <img src="{{ asset('asset/image/pin.png') }}" alt="Pin">
                 <p class="txt-current-location">Hà Nội</p>
                 <input type="text" class="search-location" placeholder="Tìm thành phố" name="" id="">
             </div>
@@ -37,22 +39,22 @@
                     <p class="infor-describe">Thời tiết dễ chịu</p>
                     <div class="detail">
                         <div class="detail-item">
-                            <img src="image/windy.svg" alt="">
+                            <img src="{{ asset('asset/image/windy.svg') }}" class="filter-white" alt="Gió">
                             <p>Gió cấp 1</p>
                         </div>
                         <div class="detail-item">
-                            <img src="image/humidity.svg" alt="">
+                            <img src="{{ asset('asset/image/humidity.svg') }}" class="filter-white" alt="Độ ẩm">
                             <p>Độ ẩm 80%</p>
                         </div>
                         <div class="detail-item">
-                            <img src="image/pressure.svg" alt="">
+                            <img src="{{ asset('asset/image/pressure.svg') }}" class="filter-white" alt="Áp suất">
                             <p>Áp suất 998hPa</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="current-icon">
-                    <img src="image/logo.svg" alt="">
+                    <img src="{{ asset('asset/image/logo.svg') }}" class="filter-white">
                 </div>
             </div>
             <div class="card-weather hourly">
@@ -61,127 +63,127 @@
                     <ol class="list-hourly-weather">
                         <li class="item">
                             <p class="hourly-time">16:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">17:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">18:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">19:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">20:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">21:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">22:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">23:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">24:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">00:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">01:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">02:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">03:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">04:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">05:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">06:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">07:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">08:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">09:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">10:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">11:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">12:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">13:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">14:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                         <li class="item">
                             <p class="hourly-time">14:00</p>
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                             <p class="hourly-degree">28 °</p>
                         </li>
                     </ol>
@@ -196,80 +198,80 @@
                         <p class="day">Hôm qua</p>
                         <p class="date">28/7</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                     <li class="day-item">
                         <p class="day">Hôm nay</p>
                         <p class="date">29/7</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                     <li class="day-item">
                         <p class="day">Ngày mai</p>
                         <p class="date">30/7</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                     <li class="day-item">
                         <p class="day">Ngày kia</p>
                         <p class="date">31/7</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                     <li class="day-item">
                         <p class="day">Chủ nhật</p>
                         <p class="date">1/8</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                     <li class="day-item">
                         <p class="day">Thứ 2</p>
                         <p class="date">2/8</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                     <li class="day-item">
                         <p class="day">Thứ 3</p>
                         <p class="date">3/8</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                     <li class="day-item">
                         <p class="day">Thứ 4</p>
                         <p class="date">4/8</p>
                         <p class="weather-daytime">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                         <p class="weather-night">
-                            <img class="hourly-icon" src="image/logo.svg" alt="">
+                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
                         </p>
                     </li>
                 </ol>
@@ -297,7 +299,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <script src="script.js"></script>
+    <script src="{{ asset('asset/js/script.js') }}"></script>
 </body>
 
 </html>
