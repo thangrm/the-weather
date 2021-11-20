@@ -132,24 +132,24 @@ main .current-icon img {
     height: 120px;
 }
 
-.infor>p {
+.info>p {
     margin: 0;
 }
 
-.infor-location {
+.info-location {
     font-weight: bold;
 }
 
-.infor-ict {
+.info-time-update {
     color: #e6e6e6;
 }
 
-.infor-temperature {
+.info-temperature {
     color: white;
     font-size: 100px;
 }
 
-.infor-describe {
+.info-description {
     font-size: 20px;
     font-weight: bold;
 }
@@ -188,6 +188,7 @@ main .current-icon img {
 .hourly {
     margin-top: 200px;
     width: 100%;
+    min-width: 920px;
     height: 180px;
     position: relative;
 }
@@ -198,6 +199,7 @@ main .current-icon img {
     padding: 0;
     list-style: none;
     display: block;
+    overflow: hidden;
 }
 
 .list-hourly-weather p {
@@ -213,7 +215,7 @@ main .current-icon img {
 .item {
     width: 50px;
     height: 100px;
-    margin: 0 30px;
+    margin: 0 32px;
     display: inline-block;
 }
 
@@ -246,12 +248,12 @@ main .current-icon img {
     right: 25px;
 }
 
-
 /*Weekly Weather*/
 
 .weekly {
     margin-top: 50px;
     width: 920px;
+    min-width: 920px;
     position: relative;
     display: inline-block;
 }
@@ -287,11 +289,10 @@ main .current-icon img {
     margin-top: 200px;
 }
 
-
 /*Air quality*/
 
 .air-quality {
-    width: 360px;
+    width: 371px;
     height: 460px;
     display: inline-block;
 }
@@ -313,14 +314,29 @@ main .current-icon img {
     display: inline-block;
 }
 
-.green {}
+.green {
+    background-color: #a8e05f;
+}
 
 .yellow {
     background-color: #fdd64b;
 }
 
-.red {}
+.red {
+    background-color: #fe6a69;
+    color: whitesmoke;
+}
 
+/* Responsive body */
+@media only screen and (max-width: 1400px) {
+    .weekly, .air-quality{
+        width: 100%;
+    }
+
+    .item {
+        margin: 0 20px;
+    }
+}
 
 /*Footer*/
 

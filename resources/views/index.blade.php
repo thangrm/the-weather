@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vn">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@
         <div class="container">
             <div class="logo">
                 <img src="{{ asset('asset/image/logo.svg') }}" class="filter-white" alt="Logo">
-                <p>The Weather</p>
+                <p>Thời tiết</p>
             </div>
 
             <div class="location">
@@ -32,35 +32,35 @@
     <main>
         <div class="container">
             <div class="current-weather">
-                <div class="infor">
-                    <p class="infor-location">Thời tiết Thường Tín, Hà Nội</p>
-                    <p class="infor-ict">Cập nhật : hh:mm ICT</p>
-                    <p class="infor-temperature">26 °</p>
-                    <p class="infor-describe">Thời tiết dễ chịu</p>
+                <div class="info">
+                    <p class="info-location">Thời tiết Thường Tín, Hà Nội</p>
+                    <p class="info-time-update">Cập nhật: <span id="timeUpdate">hh:mm:ss</span></p>
+                    <p class="info-temperature"><span id="currentTemp"></span>°</p>
+                    <p class="info-description"><span id="description"></span></p>
                     <div class="detail">
                         <div class="detail-item">
                             <img src="{{ asset('asset/image/windy.svg') }}" class="filter-white" alt="Gió">
-                            <p>Gió cấp 1</p>
+                            <p>Gió: <span id="windSpeed"></span> km/h</p>
                         </div>
                         <div class="detail-item">
                             <img src="{{ asset('asset/image/humidity.svg') }}" class="filter-white" alt="Độ ẩm">
-                            <p>Độ ẩm 80%</p>
+                            <p>Độ ẩm: <span id="humidity"></span>%</p>
                         </div>
                         <div class="detail-item">
                             <img src="{{ asset('asset/image/pressure.svg') }}" class="filter-white" alt="Áp suất">
-                            <p>Áp suất 998hPa</p>
+                            <p>Áp suất: <span id="pressure"></span>hPa</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="current-icon">
-                    <img src="{{ asset('asset/image/logo.svg') }}" class="filter-white">
+                    <img id="currentIcon" src="" class="filter-white">
                 </div>
             </div>
             <div class="card-weather hourly">
                 <span>Dự báo theo giờ</span>
                 <div class="hourly-weather-card" id="hourlyWeatherCard">
-                    <ol class="list-hourly-weather">
+                    <ol class="list-hourly-weather" id="bodyHourlyWeather">
                         <li class="item">
                             <p class="hourly-time">16:00</p>
                             <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
@@ -296,6 +296,7 @@
 
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
