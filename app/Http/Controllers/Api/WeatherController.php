@@ -26,6 +26,7 @@ class WeatherController extends Controller
                 'lon' => $request->lon,
                 'exclude' => $request->exclude,
                 'units' => 'metric',
+                'lang' => 'vi',
                 'appid' => env('OPEN_WEATHER_MAP_API_KEY'),
             );
             $endPoint = 'https://api.openweathermap.org/data/2.5/onecall';
