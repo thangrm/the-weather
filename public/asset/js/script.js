@@ -43,83 +43,87 @@ var moveCardHourly = function (moveType) {
     cardWeather.style.marginLeft = margin + "px";
 }
 
-//weekly chart
-const labels = [];
-const DATA_COUNT = 8;
-for (let i = 0; i < DATA_COUNT; ++i) {
-    labels.push(i.toString());
-}
-const datapoints1 = [28, 26, 28, 33, 31, 29, 30, 30];
-const datapoints2 = [24, 22, 22, 24, 22, 23, 24, 24];
-const data = {
-    labels: labels,
-    datasets: [{
-        label: '',
-        backgroundColor: '#ff9900',
-        borderColor: '#ff9900',
-        data: datapoints1,
-        fill: false,
-        tension: 0.3
-    }, {
-        label: '',
-        backgroundColor: '#0099ff',
-        borderColor: '#0099ff',
-        data: datapoints2,
-        fill: false,
-        tension: 0.3
-    }]
-};
-
-const config = {
-    type: 'line',
-    data: data,
-    options: {
-        layout: {
-            padding: {
-                left: 15,
-                right: 15,
-                top: 15,
-                bottom: 0
-            },
-        },
-        plugins: {
-            legend: {
-                display: false,
-            },
-            datalabels: {
-                labels: {
-                    title: {
-                        font: {
-                            size: 18,
-                        }
-                    }
-                },
-                clamp: true,
-                anchor: 'end',
-                align: 'top',
-                offset: 2,
-                formatter: function (value, context) {
-                    return value + "°";
-                }
-
-            }
-        },
-        scales: {
-            x: {
-                display: false,
-            },
-            y: {
-                display: false,
-                beginAtZero: true
-            }
-        },
+//Draw Weekly Chart
+function drawWeatherChart(datapoints1, datapoints2){
+    let labels = [];
+    let DATA_COUNT = 8;
+    for (let i = 0; i < DATA_COUNT; ++i) {
+        labels.push(i.toString());
     }
-};
-Chart.register(ChartDataLabels);
-var myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-);
+
+    let data = {
+        labels: labels,
+        datasets: [{
+            label: '',
+            backgroundColor: '#ff9900',
+            borderColor: '#ff9900',
+            data: datapoints1,
+            fill: false,
+            tension: 0.3
+        }, {
+            label: '',
+            backgroundColor: '#0099ff',
+            borderColor: '#0099ff',
+            data: datapoints2,
+            fill: false,
+            tension: 0.3
+        }]
+    };
+
+    let config = {
+        type: 'line',
+        data: data,
+        options: {
+            layout: {
+                padding: {
+                    left: 15,
+                    right: 15,
+                    top: 15,
+                    bottom: 0
+                },
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                datalabels: {
+                    labels: {
+                        title: {
+                            font: {
+                                size: 18,
+                            }
+                        }
+                    },
+                    clamp: true,
+                    anchor: 'end',
+                    align: 'top',
+                    offset: 2,
+                    formatter: function (value, context) {
+                        return value + "°";
+                    }
+
+                }
+            },
+            scales: {
+                x: {
+                    display: false,
+                },
+                y: {
+                    display: false,
+                    beginAtZero: true
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    };
+    Chart.register(ChartDataLabels);
+    let myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+}
+
 
 var weather = JSON.parse(`{
     "lat": 21.12,
@@ -1669,6 +1673,124 @@ function getHoursAndMinutes(timestamp){
     return `${hours}:${minutes}`;
 }
 
+function getDays(timestamp){
+    let d = new Date(timestamp * 1000);
+    let currentDay = d.getDay();
+    let day_name = '';
+
+    switch (currentDay) {
+        case 0:
+            day_name = "CN";
+            break;
+        case 1:
+            day_name = "Thứ 2";
+            break;
+        case 2:
+            day_name = "Thứ 3";
+            break;
+        case 3:
+            day_name = "Thứ 4";
+            break;
+        case 4:
+            day_name = "Thứ 5";
+            break;
+        case 5:
+            day_name = "Thứ 6";
+            break;
+        case 6:
+            day_name = "Thứ 7";
+    }
+    return day_name;
+}
+
+function checkAQI(aqi,no2,pm10,o3,pm25){
+    let messageAQI;
+    let color;
+    let indexNo2;
+    let indexPm10;
+    let indexO3;
+    let indexPm25;
+
+    // check aqi
+    if(aqi <= 50){
+        messageAQI = 'Tốt';
+        color = 'green';
+    }else if(aqi <= 100){
+        messageAQI = 'Trung bình';
+        color = 'yellow';
+    }else if(aqi <= 200){
+        messageAQI = 'Da nhạy cảm';
+        color = 'orange';
+    }else if(aqi <= 300){
+        messageAQI = 'Không lành mạnh';
+        color = 'red';
+    }else if(aqi <= 400){
+        messageAQI = 'Rất không lành mạnh';
+        color = 'purple';
+    }else{
+        messageAQI = 'Nguy hiểm';
+        color = 'dark-purple'
+    }
+
+    // check no2
+    if(no2 <= 50){
+        indexNo2 = 1;
+    }else if(no2 <= 100){
+        indexNo2 = 2
+    }else if(no2 <= 200){
+        indexNo2 = 3
+    }else if(no2 <= 400){
+        indexNo2 = 4
+    }else{
+        indexNo2 = 5
+    }
+
+    // check pm10
+    if(pm10 <= 25){
+        indexPm10 = 1;
+    }else if(pm10 <= 50){
+        indexPm10 = 2
+    }else if(pm10 <= 90){
+        indexPm10 = 3
+    }else if(pm10 <= 180){
+        indexPm10 = 4
+    }else{
+        indexPm10 = 5
+    }
+
+    // check o3
+    if(o3 <= 60){
+        indexO3 = 1;
+    }else if(o3 <= 120){
+        indexO3 = 2
+    }else if(o3 <= 180){
+        indexO3 = 3
+    }else if(o3 <= 240){
+        indexO3 = 4
+    }else{
+        indexO3 = 5
+    }
+
+    // check pm25
+    if(pm25 <= 60){
+        indexPm25 = 1;
+    }else if(pm25 <= 120){
+        indexPm25 = 2
+    }else if(pm25 <= 180){
+        indexPm25 = 3
+    }else if(pm25 <= 240){
+        indexPm25 = 4
+    }else{
+        indexPm25 = 5
+    }
+
+    return {'aqi': {'message': messageAQI, 'color': color},
+            'no2': indexNo2,
+            'pm10': indexPm10,
+            'o3': indexO3,
+            'pm25': indexPm25};
+}
+
 function render() {
     // Render current time
     let time = new Date(weather.current.dt * 1000);
@@ -1695,6 +1817,56 @@ function render() {
                     </li>`;
     });
     $('#bodyHourlyWeather').html(content);
+
+    // Render weekly
+    let dataPointTempMax = [];
+    let dataPointTempMin = [];
+    let contentDailyHtml = '';
+    let checkFirst = true;
+    weather.daily.forEach(function (element) {
+        dataPointTempMax.push(element.temp.max.toFixed());
+        dataPointTempMin.push(element.temp.min.toFixed());
+        let iconHourlyDay = element.weather[0].icon;
+        let iconHourlyNight = iconHourlyDay.replace('d','n');
+        let date = new Date(element.dt * 1000);
+        let classItem = "day-item";
+        if(checkFirst){
+            classItem = "day-item current-day";
+            checkFirst = false;
+        }
+        contentDailyHtml += `<li class="${classItem}">
+                                <p class="day">${getDays(element.dt)}</p>
+                                <p class="date">${date.getDate()+'/'+date.getMonth()}</p>
+                                <p class="weather-daytime">
+                                    <img class="hourly-icon" src="${getLinkIcon(iconHourlyDay)}" alt="">
+                                </p>
+                                 <p class="weather-night">
+                                    <img class="hourly-icon" src="${getLinkIcon(iconHourlyNight)}" alt="">
+                                </p>
+                            </li>`;
+
+    });
+    $('#bodyDailyWeather').html(contentDailyHtml);
+    drawWeatherChart(dataPointTempMax, dataPointTempMin);
+
+    // Render AQI
+    let aqi = air_pollution.list[0].main.aqi;
+    let no2 = air_pollution.list[0].components.no2;
+    let o3 = air_pollution.list[0].components.o3;
+    let pm25 = air_pollution.list[0].components.pm2_5;
+    let pm10 = air_pollution.list[0].components.pm10;
+    let listCheckAQI = checkAQI(aqi,no2,pm10,o3,pm25);
+    let contentAqiHTML = `<p><b>Chỉ số chất lượng không khí</b></p>
+                          <div class="aqi ${listCheckAQI.aqi.color}">
+                              <div class="${listCheckAQI.aqi.color}">
+                                  <span class="index-aqi">${aqi}</span>
+                                  <span class="status-aqi">${listCheckAQI.aqi.message}</span>
+                              </div>
+                              <div class="row">
+                              </div>
+                          </div>`;
+
+    $('#bodyAQIWeather').html(contentAqiHTML);
 }
 
 render();

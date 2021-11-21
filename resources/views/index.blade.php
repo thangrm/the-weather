@@ -191,103 +191,17 @@
                 <a class="prev" id="prevHourly">&#8249;</a>
                 <a class="next" id="nextHourly">&#8250;</a>
             </div>
-            <div class="card-weather weekly">
-                <span><b>Dự báo theo tuần</b></span>
-                <ol class="list-weather-day">
-                    <li class="day-item">
-                        <p class="day">Hôm qua</p>
-                        <p class="date">28/7</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
-                    <li class="day-item">
-                        <p class="day">Hôm nay</p>
-                        <p class="date">29/7</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
-                    <li class="day-item">
-                        <p class="day">Ngày mai</p>
-                        <p class="date">30/7</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
-                    <li class="day-item">
-                        <p class="day">Ngày kia</p>
-                        <p class="date">31/7</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
-                    <li class="day-item">
-                        <p class="day">Chủ nhật</p>
-                        <p class="date">1/8</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
-                    <li class="day-item">
-                        <p class="day">Thứ 2</p>
-                        <p class="date">2/8</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
-                    <li class="day-item">
-                        <p class="day">Thứ 3</p>
-                        <p class="date">3/8</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
-                    <li class="day-item">
-                        <p class="day">Thứ 4</p>
-                        <p class="date">4/8</p>
-                        <p class="weather-daytime">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                        <p class="weather-night">
-                            <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        </p>
-                    </li>
+            <div class="card-weather daily">
+                <span><b>Dự báo theo ngày</b></span>
+                <ol class="list-weather-day" id="bodyDailyWeather">
+                    <!-- List weather daily-->
                 </ol>
                 <div class="chart-box">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
-            <div class="card-weather air-quality">
-                <p><b>Chỉ số chất lượng không khí</b></p>
-                <div class="aqi yellow">
-                    <div class="yellow">
-                        <span class="index-aqi">68</span>
-                        <span class="status-aqi">Trung bình</span>
-                    </div>
+            <div class="card-weather air-quality" id="bodyAQIWeather">
 
-                </div>
             </div>
         </div>
     </main>

@@ -168,9 +168,7 @@ main .current-icon img {
     margin-top: 5px;
 }
 
-
 /*Hourly Weather*/
-
 .card-weather {
     background-color: white;
     color: #808080;
@@ -245,18 +243,18 @@ main .current-icon img {
     right: 25px;
 }
 
-/*Weekly Weather*/
+/*Daily Weather*/
 
-.weekly {
+.daily {
     margin-top: 50px;
     width: 920px;
     position: relative;
 }
 
 .chart-box {
-    height: 180px;
-    width: 820px;
-    margin-left: 30px;
+    width: 800px;
+    height: 220px;
+    margin-left: 36px;
     position: absolute;
     top: 165px;
 }
@@ -269,10 +267,18 @@ main .current-icon img {
 
 .day-item {
     width: 106px;
-    margin: 0;
+    margin: 0 2px;
     padding: 0;
     display: inline-block;
     text-align: center;
+}
+
+.day-item .day{
+    font-weight: bold;
+}
+
+.current-day{
+    background-color: #f8faff;
 }
 
 .day-item img {
@@ -304,7 +310,7 @@ main .current-icon img {
 
 .status-aqi {
     font-size: 18px;
-    margin-left: 100px;
+    margin-left: 30px;
     display: inline-block;
 }
 
@@ -316,8 +322,23 @@ main .current-icon img {
     background-color: #fdd64b;
 }
 
+.orange{
+    background-color: #e48442;
+    color: whitesmoke;
+}
+
 .red {
-    background-color: #fe6a69;
+    background-color: #f55e5f;
+    color: whitesmoke;
+}
+
+.purple{
+    background-color: #a070b6;
+    color: whitesmoke;
+}
+
+.dark-purple{
+    background-color: #9e697a;
     color: whitesmoke;
 }
 
