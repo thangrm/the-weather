@@ -1,8 +1,8 @@
 var nextHourly = document.getElementById("nextHourly");
 var prevHourly = document.getElementById("prevHourly");
 var cardWeather = document.getElementById("hourlyWeatherCard");
-var NEXT = 1;
-var PREV = 2;
+var NEXT = "NEXT";
+var PREV = "PREV";
 
 nextHourly.addEventListener('click', function () {
     moveCardHourly(NEXT);
@@ -13,7 +13,6 @@ prevHourly.addEventListener('click', function () {
 
 var moveCardHourly = function (moveType) {
     let margin = cardWeather.style.marginLeft;
-    console.log(margin);
     margin = margin.match(/[\d|-]/g);
     if (margin == null) {
         margin = 0;
@@ -21,13 +20,23 @@ var moveCardHourly = function (moveType) {
         margin = margin.join("");
     }
 
+    let step = 1150;
+    let limitMargin = -1600;
+    if(screen.width >= 1400){
+        step = 1150;
+        limitMargin = -1600;
+    }else if(screen.width >= 1200){
+        step = 768;
+        limitMargin = -1880;
+    }
+
     margin = parseInt(margin);
     if (moveType === NEXT) {
-        margin = margin - 1150;
-        if (margin < -1600)
-            margin = -1600;
+        margin = margin - step;
+        if (margin < limitMargin)
+            margin = limitMargin;
     } else if (moveType === PREV) {
-        margin = margin + 1150;
+        margin = margin + step;
         if (margin > 0)
             margin = 0;
     }
@@ -1673,11 +1682,13 @@ function render() {
 
     // Render hourly
     let content = '';
-    let maxDt = time.getTime()/1000 + 3600*30;
+    let maxDt = time.getTime()/1000 + 3600*24;
+    let i = 0;
     weather.hourly.forEach(function (element) {
+        i++;
         if(element.dt > maxDt)
             return;
-        content += `<li class="item">
+        content += `<li class="item ${i}">
                        <p class="hourly-time">${getHoursAndMinutes(element.dt)}</p>
                        <img class="hourly-icon" src="${getLinkIcon(element.weather[0].icon,false)}">
                        <p class="hourly-degree">${parseInt(element.temp)} °</p>

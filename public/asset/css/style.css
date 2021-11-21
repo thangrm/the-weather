@@ -108,15 +108,11 @@ header .location input::placeholder {
 /*Current Weather*/
 
 main {
-    text-align: left;
     color: whitesmoke;
 }
 
-main .container {
-    position: relative;
-}
-
 main .current-weather {
+    text-align: left;
     display: flex;
     position: relative;
 }
@@ -176,19 +172,20 @@ main .current-icon img {
 /*Hourly Weather*/
 
 .card-weather {
+    background-color: white;
+    color: #808080;
+    overflow: hidden;
+    text-align: left;
     border: none;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 14px 0 rgb(0 0 0 / 8%);
-    background-color: white;
-    color: #808080;
-    overflow: hidden;
+    display: inline-block;
 }
 
 .hourly {
     margin-top: 200px;
     width: 100%;
-    min-width: 920px;
     height: 180px;
     position: relative;
 }
@@ -253,9 +250,7 @@ main .current-icon img {
 .weekly {
     margin-top: 50px;
     width: 920px;
-    min-width: 920px;
     position: relative;
-    display: inline-block;
 }
 
 .chart-box {
@@ -294,7 +289,6 @@ main .current-icon img {
 .air-quality {
     width: 371px;
     height: 460px;
-    display: inline-block;
 }
 
 .aqi {
@@ -328,13 +322,13 @@ main .current-icon img {
 }
 
 /* Responsive body */
-@media only screen and (max-width: 1400px) {
-    .weekly, .air-quality{
-        width: 100%;
+@media only screen and (max-width: 1399px) {
+    .card-weather{
+        width: 920px;
     }
 
     .item {
-        margin: 0 20px;
+        margin: 0 30px;
     }
 }
 
