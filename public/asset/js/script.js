@@ -22,10 +22,10 @@ var moveCardHourly = function (moveType) {
 
     let step = 1150;
     let limitMargin = -1600;
-    if(screen.width >= 1400){
+    if (screen.width >= 1400) {
         step = 1150;
         limitMargin = -1600;
-    }else if(screen.width >= 1200){
+    } else if (screen.width >= 1200) {
         step = 768;
         limitMargin = -1880;
     }
@@ -44,7 +44,7 @@ var moveCardHourly = function (moveType) {
 }
 
 //Draw Weekly Chart
-function drawWeatherChart(datapoints1, datapoints2){
+function drawWeatherChart(datapoints1, datapoints2) {
     let labels = [];
     let DATA_COUNT = 8;
     for (let i = 0; i < DATA_COUNT; ++i) {
@@ -1655,7 +1655,7 @@ var air_pollution = JSON.parse(`{
 }`);
 
 function getLinkIcon(icon, bigger = true) {
-    if(bigger)
+    if (bigger)
         return `http://openweathermap.org/img/wn/${icon}@2x.png`;
     else
         return `http://openweathermap.org/img/wn/${icon}.png`;
@@ -1665,15 +1665,15 @@ function leftFillNum(num, targetLength) {
     return num.toString().padStart(targetLength, 0);
 }
 
-function getHoursAndMinutes(timestamp){
+function getHoursAndMinutes(timestamp) {
     let d = new Date(timestamp * 1000);
-    let hours = leftFillNum(d.getHours(),2);
+    let hours = leftFillNum(d.getHours(), 2);
     let minutes = leftFillNum(d.getMinutes(), 2);
 
     return `${hours}:${minutes}`;
 }
 
-function getDays(timestamp){
+function getDays(timestamp) {
     let d = new Date(timestamp * 1000);
     let currentDay = d.getDay();
     let day_name = '';
@@ -1703,92 +1703,103 @@ function getDays(timestamp){
     return day_name;
 }
 
-function checkAQI(aqi,no2,pm10,o3,pm25){
-    let messageAQI;
+function getColorByIndex(index){
     let color;
+    if (index === 1) {
+        color = 'green';
+    } else if (index === 2) {
+        color = 'yellow';
+    } else if (index === 3) {
+        color = 'orange';
+    } else if (index === 4) {
+        color = 'red';
+    } else if (index === 5) {
+        color = 'purple';
+    } else {
+        color = 'dark-purple'
+    }
+    return color;
+}
+
+function checkAQI(aqi, no2, pm10, o3, pm25) {
+    let messageAQI;
     let indexNo2;
     let indexPm10;
     let indexO3;
     let indexPm25;
 
     // check aqi
-    if(aqi <= 50){
+    if (aqi === 1) {
         messageAQI = 'Tốt';
-        color = 'green';
-    }else if(aqi <= 100){
+    } else if (aqi === 2)  {
         messageAQI = 'Trung bình';
-        color = 'yellow';
-    }else if(aqi <= 200){
+    } else if (aqi === 3)  {
         messageAQI = 'Da nhạy cảm';
-        color = 'orange';
-    }else if(aqi <= 300){
+    } else if (aqi === 4)  {
         messageAQI = 'Không lành mạnh';
-        color = 'red';
-    }else if(aqi <= 400){
+    } else {
         messageAQI = 'Rất không lành mạnh';
-        color = 'purple';
-    }else{
-        messageAQI = 'Nguy hiểm';
-        color = 'dark-purple'
     }
 
     // check no2
-    if(no2 <= 50){
+    if (no2 <= 50) {
         indexNo2 = 1;
-    }else if(no2 <= 100){
+    } else if (no2 <= 100) {
         indexNo2 = 2
-    }else if(no2 <= 200){
+    } else if (no2 <= 200) {
         indexNo2 = 3
-    }else if(no2 <= 400){
+    } else if (no2 <= 400) {
         indexNo2 = 4
-    }else{
+    } else {
         indexNo2 = 5
     }
 
     // check pm10
-    if(pm10 <= 25){
+    if (pm10 <= 25) {
         indexPm10 = 1;
-    }else if(pm10 <= 50){
+    } else if (pm10 <= 50) {
         indexPm10 = 2
-    }else if(pm10 <= 90){
+    } else if (pm10 <= 90) {
         indexPm10 = 3
-    }else if(pm10 <= 180){
+    } else if (pm10 <= 180) {
         indexPm10 = 4
-    }else{
+    } else {
         indexPm10 = 5
     }
 
     // check o3
-    if(o3 <= 60){
+    if (o3 <= 60) {
         indexO3 = 1;
-    }else if(o3 <= 120){
+    } else if (o3 <= 120) {
         indexO3 = 2
-    }else if(o3 <= 180){
+    } else if (o3 <= 180) {
         indexO3 = 3
-    }else if(o3 <= 240){
+    } else if (o3 <= 240) {
         indexO3 = 4
-    }else{
+    } else {
         indexO3 = 5
     }
 
     // check pm25
-    if(pm25 <= 60){
+    if (pm25 <= 60) {
         indexPm25 = 1;
-    }else if(pm25 <= 120){
+    } else if (pm25 <= 120) {
         indexPm25 = 2
-    }else if(pm25 <= 180){
+    } else if (pm25 <= 180) {
         indexPm25 = 3
-    }else if(pm25 <= 240){
+    } else if (pm25 <= 240) {
         indexPm25 = 4
-    }else{
+    } else {
         indexPm25 = 5
     }
 
-    return {'aqi': {'message': messageAQI, 'color': color},
-            'no2': indexNo2,
-            'pm10': indexPm10,
-            'o3': indexO3,
-            'pm25': indexPm25};
+    return {
+        'message': messageAQI,
+        'no2': indexNo2,
+        'pm10': indexPm10,
+        'o3': indexO3,
+        'pm25': indexPm25
+    };
 }
 
 function render() {
@@ -1804,15 +1815,15 @@ function render() {
 
     // Render hourly
     let content = '';
-    let maxDt = time.getTime()/1000 + 3600*24;
+    let maxDt = time.getTime() / 1000 + 3600 * 24;
     let i = 0;
     weather.hourly.forEach(function (element) {
         i++;
-        if(element.dt > maxDt)
+        if (element.dt > maxDt)
             return;
         content += `<li class="item ${i}">
                        <p class="hourly-time">${getHoursAndMinutes(element.dt)}</p>
-                       <img class="hourly-icon" src="${getLinkIcon(element.weather[0].icon,false)}">
+                       <img class="hourly-icon" src="${getLinkIcon(element.weather[0].icon, false)}">
                        <p class="hourly-degree">${parseInt(element.temp)} °</p>
                     </li>`;
     });
@@ -1827,16 +1838,16 @@ function render() {
         dataPointTempMax.push(element.temp.max.toFixed());
         dataPointTempMin.push(element.temp.min.toFixed());
         let iconHourlyDay = element.weather[0].icon;
-        let iconHourlyNight = iconHourlyDay.replace('d','n');
+        let iconHourlyNight = iconHourlyDay.replace('d', 'n');
         let date = new Date(element.dt * 1000);
         let classItem = "day-item";
-        if(checkFirst){
+        if (checkFirst) {
             classItem = "day-item current-day";
             checkFirst = false;
         }
         contentDailyHtml += `<li class="${classItem}">
                                 <p class="day">${getDays(element.dt)}</p>
-                                <p class="date">${date.getDate()+'/'+date.getMonth()}</p>
+                                <p class="date">${date.getDate() + '/' + date.getMonth()}</p>
                                 <p class="weather-daytime">
                                     <img class="hourly-icon" src="${getLinkIcon(iconHourlyDay)}" alt="">
                                 </p>
@@ -1855,18 +1866,47 @@ function render() {
     let o3 = air_pollution.list[0].components.o3;
     let pm25 = air_pollution.list[0].components.pm2_5;
     let pm10 = air_pollution.list[0].components.pm10;
-    let listCheckAQI = checkAQI(aqi,no2,pm10,o3,pm25);
+    let listCheckAQI = checkAQI(aqi, no2, pm10, o3, pm25);
+    console.log(listCheckAQI);
     let contentAqiHTML = `<p><b>Chỉ số chất lượng không khí</b></p>
-                          <div class="aqi ${listCheckAQI.aqi.color}">
-                              <div class="${listCheckAQI.aqi.color}">
-                                  <span class="index-aqi">${aqi}</span>
-                                  <span class="status-aqi">${listCheckAQI.aqi.message}</span>
-                              </div>
-                              <div class="row">
-                              </div>
-                          </div>`;
+                          <div class="aqi ${getColorByIndex(aqi)}">
+                                <div class="card-aqi ${getColorByIndex(aqi)}">
+                                    <span class="index-aqi">${aqi}</span>
+                                    <span class="status-aqi">${listCheckAQI.message}</span>
+                                </div>
+                          </div>
+                          <div class="list-pollution">
+                                <span>Chất gây ô nhiễm</span>
+                                <div class="pollution-item">
+                                    <p>PM2.5</p>
+                                    <div class="progress pollution-bar">
+                                        <div class="progress-bar ${getColorByIndex(listCheckAQI.pm25)}" role="progressbar" style="width: ${listCheckAQI.pm25*18 + pm25/110*10}%" ></div>
+                                    </div>
+                                    <span> ${pm25} µg/m³</span>
+                                </div>
+                                <div class="pollution-item">
+                                    <p>PM10</p>
+                                    <div class="progress pollution-bar">
+                                        <div class="progress-bar ${getColorByIndex(listCheckAQI.pm10)}" role="progressbar" style="width: ${listCheckAQI.pm10*18 + pm10/180*10}%"></div>
+                                    </div>
+                                    <span> ${pm10} µg/m³</span>
+                                </div>
+                                <div class="pollution-item">
+                                    <p>O3</p>
+                                    <div class="progress pollution-bar">
+                                        <div class="progress-bar ${getColorByIndex(listCheckAQI.o3)}" role="progressbar" style="width: ${listCheckAQI.o3*18 + o3/240*10}%"></div>
+                                    </div>
+                                    <span> ${o3} µg/m³</span>
+                                </div>
+                                <div class="pollution-item">
+                                    <p>NO2</p>
+                                    <div class="progress pollution-bar">
+                                        <div class="progress-bar ${getColorByIndex(listCheckAQI.no2)}" role="progressbar" style="width: ${listCheckAQI.no2*18 + no2/400*10}%"></div>
+                                    </div>
+                                    <span> ${no2} µg/m³</span>
+                                </div>
+                            </div>`;
 
     $('#bodyAQIWeather').html(contentAqiHTML);
 }
-
 render();
