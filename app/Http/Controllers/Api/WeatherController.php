@@ -75,6 +75,27 @@ class WeatherController extends Controller
         }
     }
 
+    function ReverseGeocoding(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+                'lat' => 'required',
+                'lon' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response = array('message' => 'Nothing to geocode', 'success' => false);
+            return response()->json($response, 400);
+        } else {
+            $params = array(
+                    'lat' => $request->lat,
+                    'lon' => $request->lon,
+                    'appid' => env('OPEN_WEATHER_MAP_API_KEY'),
+            );
+            $endPoint = 'https://api.openweathermap.org/geo/1.0/reverse';
+            return response($this->callGetCURL($endPoint, $params));
+        }
+    }
+
     private function callGetCURL($endPoint, $params)
     {
         $url = $endPoint . '?' . http_build_query($params);

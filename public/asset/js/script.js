@@ -3,6 +3,7 @@ var prevHourly = document.getElementById("prevHourly");
 var cardWeather = document.getElementById("hourlyWeatherCard");
 var NEXT = "NEXT";
 var PREV = "PREV";
+var myChart;
 
 nextHourly.addEventListener('click', function () {
     moveCardHourly(NEXT);
@@ -20,12 +21,13 @@ var moveCardHourly = function (moveType) {
         margin = margin.join("");
     }
 
-    let step = 1150;
-    let limitMargin = -1600;
-    if (screen.width >= 1400) {
+    let step;
+    let limitMargin;
+    console.log(window.innerWidth);
+    if (window.innerWidth >= 1400) {
         step = 1150;
         limitMargin = -1600;
-    } else if (screen.width >= 1200) {
+    } else {
         step = 768;
         limitMargin = -1880;
     }
@@ -117,8 +119,11 @@ function drawWeatherChart(datapoints1, datapoints2) {
             maintainAspectRatio: false
         }
     };
+    if(myChart != null){
+        myChart.destroy();
+    }
     Chart.register(ChartDataLabels);
-    let myChart = new Chart(
+    myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
@@ -286,12 +291,10 @@ function renderWeather(weather) {
     // Render hourly
     let content = '';
     let maxDt = time.getTime() / 1000 + 3600 * 24;
-    let i = 0;
     weather.hourly.forEach(function (element) {
-        i++;
         if (element.dt > maxDt)
             return;
-        content += `<li class="item ${i}">
+        content += `<li class="item">
                        <p class="hourly-time">${getHoursAndMinutes(element.dt)}</p>
                        <img class="hourly-icon" src="${getLinkIcon(element.weather[0].icon, false)}">
                        <p class="hourly-degree">${parseInt(element.temp)} °</p>

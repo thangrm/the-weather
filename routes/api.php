@@ -24,3 +24,5 @@ Route::get('weather', [WeatherController::class, 'Index'])->name('api.weather');
 Route::get('air_pollution', [WeatherController::class, 'AirPollution'])->name('api.air_pollution');;
 
 Route::get('geocoding', [WeatherController::class, 'Geocoding'])->name('api.geocoding');
+
+Route::get('reverse', [WeatherController::class, 'ReverseGeocoding'])->name('api.reverse');

@@ -23,7 +23,7 @@
 
         <div class="location">
             <img src="{{ asset('asset/image/pin.png') }}" alt="Pin">
-            <p class="txt-current-location" id="txtCurrentLocation">Thường tín, VN</p>
+            <p class="txt-current-location" id="txtCurrentLocation">Hà Nội</p>
             <div class="wrap-search">
                 <input type="text" class="search-location" placeholder="Tìm thành phố" name="" id="btnSearch">
                 <div class="search-suggestions" id="searchSuggestion">
@@ -155,7 +155,7 @@
         }
     });
 
-    function getLocation(lat,lon,nameLocation){
+    function getWeatherLocation(lat,lon,nameLocation){
         $('#searchSuggestion').hide();
         $('#txtCurrentLocation').text(nameLocation);
         $('#infoLocation').text(nameLocation);
@@ -200,7 +200,7 @@
                                 nameLocation = e.local_names.vi + ', ' + e.country;
                             }
                         }
-                        htmlSearch += `<li onclick="getLocation(${e.lat},${e.lon},'${nameLocation}')">${nameLocation}</li>`;
+                        htmlSearch += `<li onclick="getWeatherLocation(${e.lat},${e.lon},'${nameLocation}')">${nameLocation}</li>`;
                     });
                 }
                 if(htmlSearch === ''){
@@ -211,7 +211,43 @@
         });
     });
 
+    function getCurrentLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(ReverseLocation,ErrorLocation);
+        }
+    }
 
+    let checkDefaultLocation = false;
+    function ReverseLocation(position){
+        if(checkDefaultLocation){
+            return;
+        }
+        checkDefaultLocation = true;
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('api.reverse') }}',
+            data: {lat: position.coords.latitude, lon: position.coords.longitude},
+            success: function(response){
+                response = JSON.parse(response);
+                if(Array.isArray(response) && response.length > 0){
+                    nameLocation = response[0].name + ', ' + response[0].country;
+                    getWeatherLocation(position.coords.latitude, position.coords.longitude, nameLocation);
+                }
+            }
+        });
+    }
+
+    function ErrorLocation(error){
+        if(checkDefaultLocation) {
+            return;
+        }
+        let lat = 21.0245;
+        let lon = 105.8412;
+        let nameLocation = "Hà Nội";
+        checkDefaultLocation = true;
+        getWeatherLocation(lat,lon,nameLocation);
+    }
+    getCurrentLocation();
 </script>
 </body>
 
