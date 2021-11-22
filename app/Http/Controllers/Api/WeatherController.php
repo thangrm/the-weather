@@ -55,6 +55,26 @@ class WeatherController extends Controller
         }
     }
 
+    function Geocoding(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+                'q' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response = array('message' => 'Nothing city name', 'success' => false);
+            return response()->json($response, 400);
+        } else {
+            $params = array(
+                    'q' => $request->q,
+                    'limit' => 3,
+                    'appid' => env('OPEN_WEATHER_MAP_API_KEY'),
+            );
+            $endPoint = 'https://api.openweathermap.org/geo/1.0/direct';
+            return response($this->callGetCURL($endPoint, $params));
+        }
+    }
+
     private function callGetCURL($endPoint, $params)
     {
         $url = $endPoint . '?' . http_build_query($params);

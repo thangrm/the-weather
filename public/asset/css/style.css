@@ -65,7 +65,6 @@ header .logo p {
 }
 
 header .location {
-    width: 320px;
     height: 50px;
     padding-top: 20px;
     display: flex;
@@ -78,14 +77,16 @@ header .location img {
 }
 
 header .location .txt-current-location {
-    width: 50px;
     font-size: 16px;
     margin: 0 5px;
 }
 
+header .wrap-search{
+    position: relative;
+}
+
 header .location input {
-    flex-grow: 1;
-    width: 100px;
+    width: 220px;
     height: 25px;
     margin: 0 10px;
     padding: 0 10px;
@@ -104,6 +105,29 @@ header .location input::placeholder {
     color: whitesmoke
 }
 
+header .search-suggestions{
+    width: 220px;
+    position: absolute;
+    background-color: white;
+    top: 26px;
+    left: 10px;
+    display: none;
+}
+.search-suggestions ul{
+    list-style: none;
+    text-align: left;
+    color: black;
+    padding: 0;
+}
+.search-suggestions li{
+    margin: 0;
+    padding: 5px;
+}
+
+.search-suggestions li:hover{
+    background-color: #f3f3f3;
+}
+
 
 /*Current Weather*/
 
@@ -114,7 +138,6 @@ main {
 main .current-weather {
     text-align: left;
     display: flex;
-    position: relative;
 }
 
 main .current-icon {

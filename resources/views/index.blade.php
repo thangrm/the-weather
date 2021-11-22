@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Thời tiết</title>
     <link rel="icon" href="{{ asset('asset/image/icon.png') }}" type="image/icon type">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,8 +23,15 @@
 
         <div class="location">
             <img src="{{ asset('asset/image/pin.png') }}" alt="Pin">
-            <p class="txt-current-location">Hà Nội</p>
-            <input type="text" class="search-location" placeholder="Tìm thành phố" name="" id="">
+            <p class="txt-current-location" id="txtCurrentLocation">Thường tín, VN</p>
+            <div class="wrap-search">
+                <input type="text" class="search-location" placeholder="Tìm thành phố" name="" id="btnSearch">
+                <div class="search-suggestions" id="searchSuggestion">
+                    <ul id="bodySearchSuggestion">
+
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -33,7 +41,7 @@
     <div class="container">
         <div class="current-weather">
             <div class="info">
-                <p class="info-location">Thời tiết Thường Tín, Hà Nội</p>
+                <p class="info-location">Thời tiết <span id="infoLocation"></span></p>
                 <p class="info-time-update">Cập nhật: <span id="timeUpdate">hh:mm:ss</span></p>
                 <p class="info-temperature"><span id="currentTemp"></span>°</p>
                 <p class="info-description"><span id="description"></span></p>
@@ -61,131 +69,7 @@
             <span>Dự báo theo giờ</span>
             <div class="hourly-weather-card" id="hourlyWeatherCard">
                 <ol class="list-hourly-weather" id="bodyHourlyWeather">
-                    <li class="item">
-                        <p class="hourly-time">16:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">17:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">18:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">19:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">20:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">21:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">22:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">23:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">24:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">00:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">01:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">02:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">03:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">04:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">05:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">06:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">07:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">08:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">09:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">10:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">11:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">12:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">13:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">14:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
-                    <li class="item">
-                        <p class="hourly-time">14:00</p>
-                        <img class="hourly-icon" src="{{ asset('asset/image/logo.svg') }}" alt="">
-                        <p class="hourly-degree">28 °</p>
-                    </li>
+                    <!-- List weather hourly-->
                 </ol>
             </div>
             <a class="prev" id="prevHourly">&#8249;</a>
@@ -264,6 +148,71 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script src="{{ asset('asset/js/script.js') }}"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    function getLocation(lat,lon,nameLocation){
+        $('#searchSuggestion').hide();
+        $('#txtCurrentLocation').text(nameLocation);
+        $('#infoLocation').text(nameLocation);
+
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('api.weather') }}',
+            data: {lat: lat, lon: lon,  exclude: 'minutely'},
+            success: function(response){
+                let weather = JSON.parse(response);
+                renderWeather(weather);
+            }
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('api.air_pollution') }}',
+            data: {lat: lat, lon: lon,  exclude: 'minutely'},
+            success: function(response){
+                let air_pollution = JSON.parse(response);
+                renderAQI(air_pollution);
+            }
+        });
+    }
+
+    $('#btnSearch').on('change',function (){
+        $('#bodySearchSuggestion').html('');
+        $('#searchSuggestion').show();
+        let nameCity = $('#btnSearch').val();
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('api.geocoding') }}',
+            data: {q: nameCity},
+            success: function(response){
+                response = JSON.parse(response);
+                let htmlSearch = '';
+                if(Array.isArray(response)){
+                    response.forEach(function (e){
+                        let nameLocation = e.name + ', ' + e.country;
+                        if(e.hasOwnProperty('local_names')){
+                            if(e.local_names.hasOwnProperty('vi')){
+                                nameLocation = e.local_names.vi + ', ' + e.country;
+                            }
+                        }
+                        htmlSearch += `<li onclick="getLocation(${e.lat},${e.lon},'${nameLocation}')">${nameLocation}</li>`;
+                    });
+                }
+                if(htmlSearch === ''){
+                    htmlSearch = `<p style="text-align: center; padding-top: 10px;">Không tìm thấy kết quả.</p>`;
+                }
+                $('#bodySearchSuggestion').html(htmlSearch);
+            }
+        });
+    });
+
+
+</script>
 </body>
 
 </html>

@@ -19,6 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('weather', [WeatherController::class, 'Index']);
+Route::get('weather', [WeatherController::class, 'Index'])->name('api.weather');;
 
-Route::get('air_pollution', [WeatherController::class, 'AirPollution']);
+Route::get('air_pollution', [WeatherController::class, 'AirPollution'])->name('api.air_pollution');;
+
+Route::get('geocoding', [WeatherController::class, 'Geocoding'])->name('api.geocoding');
