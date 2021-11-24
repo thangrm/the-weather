@@ -17,6 +17,9 @@ body {
     header .location {
         max-width: 250px;
     }
+    .current-icon {
+        margin-left: 10% !important;
+    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -81,7 +84,7 @@ header .location .txt-current-location {
     margin: 0 5px;
 }
 
-header .wrap-search{
+header .wrap-search {
     position: relative;
 }
 
@@ -105,7 +108,7 @@ header .location input::placeholder {
     color: whitesmoke
 }
 
-header .search-suggestions{
+header .search-suggestions {
     width: 220px;
     position: absolute;
     background-color: white;
@@ -113,18 +116,20 @@ header .search-suggestions{
     left: 10px;
     display: none;
 }
-.search-suggestions ul{
+
+.search-suggestions ul {
     list-style: none;
     text-align: left;
     color: black;
     padding: 0;
 }
-.search-suggestions li{
+
+.search-suggestions li {
     margin: 0;
     padding: 5px;
 }
 
-.search-suggestions li:hover{
+.search-suggestions li:hover {
     background-color: #f3f3f3;
 }
 
@@ -141,9 +146,8 @@ main .current-weather {
 }
 
 main .current-icon {
-    position: absolute;
-    right: 10%;
-    top: 20%;
+    margin-top: 8%;
+    margin-left: 50%;
 }
 
 main .current-icon img {
@@ -191,7 +195,9 @@ main .current-icon img {
     margin-top: 5px;
 }
 
+
 /*Hourly Weather*/
+
 .card-weather {
     background-color: white;
     color: #808080;
@@ -266,6 +272,7 @@ main .current-icon img {
     right: 25px;
 }
 
+
 /*Daily Weather*/
 
 .daily {
@@ -296,11 +303,11 @@ main .current-icon img {
     text-align: center;
 }
 
-.day-item .day{
+.day-item .day {
     font-weight: bold;
 }
 
-.current-day{
+.current-day {
     background-color: #f8faff;
 }
 
@@ -312,6 +319,7 @@ main .current-icon img {
 .weather-night {
     margin-top: 200px;
 }
+
 
 /*Air quality*/
 
@@ -325,7 +333,7 @@ main .current-icon img {
     height: 80px;
 }
 
-.card-aqi{
+.card-aqi {
     display: flex;
     align-items: center;
 }
@@ -342,36 +350,34 @@ main .current-icon img {
     display: inline-block;
 }
 
-.list-pollution{
-    margin:25px 0 0 0;
+.list-pollution {
+    margin: 25px 0 0 0;
 }
 
-.pollution-item{
+.pollution-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.pollution-item>p{
+.pollution-item>p {
     width: 50px;
     margin: 0;
 }
 
-.pollution-item>span{
+.pollution-item>span {
     text-align: right;
     display: inline-block;
     width: 100px;
     margin: 0;
 }
 
-.pollution-bar{
+.pollution-bar {
     flex-grow: 1;
     height: 0.6rem;
     margin: 0 10px;
 }
-
-
 
 .green {
     background-color: #a8e05f;
@@ -381,7 +387,7 @@ main .current-icon img {
     background-color: #fdd64b;
 }
 
-.orange{
+.orange {
     background-color: #e48442;
     color: whitesmoke;
 }
@@ -391,26 +397,28 @@ main .current-icon img {
     color: whitesmoke;
 }
 
-.purple{
+.purple {
     background-color: #a070b6;
     color: whitesmoke;
 }
 
-.dark-purple{
+.dark-purple {
     background-color: #9e697a;
     color: whitesmoke;
 }
 
+
 /* Responsive body */
+
 @media only screen and (max-width: 1399px) {
-    .card-weather{
+    .card-weather {
         width: 920px;
     }
-
     .item {
         margin: 0 30px;
     }
 }
+
 
 /*Footer*/
 
@@ -421,7 +429,7 @@ footer {
     background-color: cornflowerblue;
 }
 
-.footer-content{
+.footer-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -429,11 +437,11 @@ footer {
     padding-top: 50px;
 }
 
-.footer-copyright{
+.footer-copyright {
     margin: 0;
 }
 
-.footer-section a{
+.footer-section a {
     text-decoration: none;
     color: white;
 }
